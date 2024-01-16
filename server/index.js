@@ -1,12 +1,12 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT;
 const http = require('http');
 const server = http.createServer(app);
 const cors = require('cors');
 const { Server } = require('socket.io');
 const path = require('path');
 require('dotenv').config();
+const port = process.env.PORT;
 
 app.use(cors());
 
