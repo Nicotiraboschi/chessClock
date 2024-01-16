@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000 || process.env.PORT;
+const port = process.env.PORT;
 const http = require('http');
 const server = http.createServer(app);
 const cors = require('cors');
@@ -15,6 +15,7 @@ const io = new Server(server, {
     origin: '*',
     methods: ['GET', 'POST'],
   },
+  S,
 });
 
 io.on('connection', (socket) => {
