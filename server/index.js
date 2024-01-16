@@ -15,7 +15,6 @@ const io = new Server(server, {
     origin: '*',
     methods: ['GET', 'POST'],
   },
-  S,
 });
 
 io.on('connection', (socket) => {
