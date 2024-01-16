@@ -4,7 +4,7 @@ import './App.css';
 import { useGlobalContext } from './context';
 import io from 'socket.io-client';
 const socket = io.connect(
-  window.location.hostname + ':' + window.location.port
+  window.location.hostname + ':' + window.location.port || 'localhost:3000'
 );
 
 function Timer() {
@@ -17,6 +17,17 @@ function Timer() {
   const [isButtonPressed, setIsButtonPressed] = useState(false);
   const [isFinished, setIsFinished] = useState(false);
   const [message, setMessage] = useState('');
+
+  const stop = () => {
+    socket.emit('finished', { player: 'none(?)' });
+    socket.on('finished', () => {
+      setMessage('Clock was stopped');
+      setIsStarted(false);
+    });
+    setIsFinished(true);
+    clearInterval(intervalId);
+    setActualSeconds(initialSeconds);
+  };
 
   const start = () => {
     setIsButtonPressed(true);
@@ -95,6 +106,24 @@ function Timer() {
     const roomName = joinedRoom.name;
     socket.emit('joinRoom', roomName);
   }, []);
+
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      // Verifica se la chiave premuta è "Escape"
+      if (event.key === 'Escape') {
+        stop();
+        // Aggiungi il tuo codice per gestire l'azione associata a "Escape"
+      }
+    };
+
+    // Aggiungi un listener per l'evento 'keydown'
+    window.addEventListener('keydown', handleKeyPress);
+
+    // Pulisci il listener quando il componente viene smontato
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, []); //
 
   return (
     <main>

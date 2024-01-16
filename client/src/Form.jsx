@@ -3,7 +3,7 @@ import { useGlobalContext } from './context';
 import io from 'socket.io-client';
 import ListRooms from './ListRooms';
 const socket = io.connect(
-  window.location.hostname + ':' + window.location.port
+  window.location.hostname + ':' + window.location.port || 'localhost:3000'
 );
 
 const Form = () => {
