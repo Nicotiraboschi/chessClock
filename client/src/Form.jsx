@@ -3,7 +3,6 @@ import { useGlobalContext } from './context';
 import io from 'socket.io-client';
 import ListRooms from './ListRooms';
 
-console.log(window.location.origin);
 const socket = io.connect(window.location.origin);
 
 const Form = () => {
@@ -17,6 +16,7 @@ const Form = () => {
     name: '',
     initialSeconds: 180,
   });
+  console.log(window.location.origin);
 
   const submitForm = (e) => {
     e.preventDefault();
