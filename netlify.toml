@@ -1,9 +1,0 @@
-[build]
-  command = "npm run build"
-
-[dev]
-  command = "npm start"
-
-[[functions]]
-  directory = "netlify-functions"
-  command = "npm run netlify-functions"
