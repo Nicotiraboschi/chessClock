@@ -4,7 +4,8 @@ import './App.css';
 import { useGlobalContext } from './context';
 import io from 'socket.io-client';
 const socket = io.connect(
-  window.location.hostname + ':' + window.location.port || 'localhost:3000'
+  window.location.hostname +
+    (window.location.port ? ':' + window.location.port : '')
 );
 
 function Timer() {
