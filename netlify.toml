@@ -3,5 +3,5 @@
   
 
 [dev]
-  command = "npm run server"
+  command = "npm start"
 
