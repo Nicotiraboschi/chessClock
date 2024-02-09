@@ -6,7 +6,7 @@ const cors = require('cors');
 const { Server } = require('socket.io');
 const path = require('path');
 require('dotenv').config();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3000;
 
 const corsOptions = {
   origin: process.env.CORS_ORIGIN || '*',
