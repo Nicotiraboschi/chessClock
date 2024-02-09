@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 import { useGlobalContext } from './context';
 import io from 'socket.io-client';
 import ListRooms from './ListRooms';
+
 const socket = io.connect(
-  window.location.hostname + ':' + window.location.port || 'localhost:3000'
+  window.location.hostname +
+    (window.location.port ? ':' + window.location.port : '')
 );
 
 const Form = () => {
