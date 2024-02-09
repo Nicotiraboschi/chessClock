@@ -9,11 +9,15 @@ require('dotenv').config();
 const port = process.env.PORT;
 // const port = process.env.PORT || 3000;
 
-app.use(cors());
-
+app.use(
+  cors({
+    origin: 'https://chess-gong.netlify.app/',
+    methods: ['GET', 'POST'],
+  })
+);
 const io = new Server(server, {
   cors: {
-    origin: '*',
+    origin: 'https://chess-gong.netlify.app/',
     methods: ['GET', 'POST'],
   },
 });
