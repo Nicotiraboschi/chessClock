@@ -3,10 +3,7 @@ import { useGlobalContext } from './context';
 import io from 'socket.io-client';
 import ListRooms from './ListRooms';
 
-const socket = io.connect(
-  window.location.hostname +
-    (window.location.port ? ':' + window.location.port : '')
-);
+const socket = io.connect(window.location.origin);
 
 const Form = () => {
   const { setIsStarted, setToTimer, setIsFinished } = useGlobalContext();

@@ -3,10 +3,7 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import { useGlobalContext } from './context';
 import io from 'socket.io-client';
-const socket = io.connect(
-  window.location.hostname +
-    (window.location.port ? ':' + window.location.port : '')
-);
+const socket = io.connect(window.location.origin);
 
 function Timer() {
   const { setIsStarted, joinedRoom, setToTimer } = useGlobalContext();
