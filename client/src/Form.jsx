@@ -16,8 +16,6 @@ const Form = () => {
     name: '',
     initialSeconds: 180,
   });
-  console.log(window.location.origin);
-  console.log('qua');
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -59,7 +57,11 @@ const Form = () => {
       <input
         type="text"
         value={textRoom}
-        onChange={(e) => setTextRoom(e.target.value)}
+        onChange={(e) => {
+          console.log(window.location.origin);
+          console.log('qua');
+          setTextRoom(e.target.value);
+        }}
       />
 
       <label htmlFor="initialSeconds">Initial Seconds</label>
