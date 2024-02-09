@@ -6,20 +6,17 @@ const cors = require('cors');
 const { Server } = require('socket.io');
 const path = require('path');
 require('dotenv').config();
-const port = process.env.PORT;
-// const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
-app.use(
-  cors({
-    origin: 'https://chess-gong.netlify.app/',
-    methods: ['GET', 'POST'],
-  })
-);
+const corsOptions = {
+  origin: process.env.CORS_ORIGIN || '*',
+  methods: ['GET', 'POST'],
+};
+
+app.use(cors(corsOptions));
+
 const io = new Server(server, {
-  cors: {
-    origin: 'https://chess-gong.netlify.app/',
-    methods: ['GET', 'POST'],
-  },
+  cors: corsOptions,
 });
 
 io.on('connection', (socket) => {
