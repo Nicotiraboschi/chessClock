@@ -17,6 +17,7 @@ const Form = () => {
     initialSeconds: 180,
   });
   console.log(window.location.origin);
+  console.log('qua');
 
   const submitForm = (e) => {
     e.preventDefault();
